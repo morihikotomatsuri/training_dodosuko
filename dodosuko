@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euo pipefail
+
+# DODOSUKO solution
+
+unit_list=("ドド" "スコ")
+text=""
+
+while [ ! -s "check.txt" ]; do
+
+    unit_num=$((RANDOM % 2))
+
+    text+=${unit_num}
+
+    echo -n ${unit_list[${unit_num}]}
+
+    if [[ "${text}" =~ ^[0-9]{13}$ ]]; then
+      text=""
+    elif [[ "${text}" =~ "011101110111" ]]; then
+      break
+    fi
+
+done
+
+echo "ラブ注入♡"
+
+### END ###
